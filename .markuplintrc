@@ -1,0 +1,52 @@
+{
+  "rules": {
+    "required-attr": true,
+    "no-use-event-handler-attr": false,
+    "attr-value-quotes": false,
+    "required-h1": true,
+    "deprecated-element": true,
+    "character-reference": false,
+    "id-duplication": true,
+    "no-default-value": false,
+    "ineffective-attr": false,
+    "permitted-contents": true,
+    "class-naming": false,
+    "no-empty-palpable-content": false,
+    "landmark-roles": false,
+    "doctype": "always",
+    "deprecated-attr": true,
+    "placeholder-label-option": true,
+    "use-list": false,
+    "attr-duplication": true,
+    "require-accessible-name": true,
+    "end-tag": false,
+    "label-has-control": false,
+    "case-sensitive-tag-name": false,
+    "case-sensitive-attr-name": false,
+    "invalid-attr": true,
+    "disallowed-element": true,
+    "required-element": true,
+    "no-boolean-attr-value": false,
+    "require-datetime": true,
+    "no-refer-to-non-existent-id": true,
+    "no-hard-code-id": false,
+    "wai-aria": true
+  },
+  "nodeRules": [{
+    "selector": "meta[property]",
+    "rules": {
+      "invalid-attr": {
+        "option": {
+          "attrs": {
+            "property": {
+              "type": "String"
+            },
+            "content": {
+              "type": "String"
+            }
+          }
+        }
+      }
+    }
+  }]
+}

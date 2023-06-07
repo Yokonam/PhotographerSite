@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "amd",
+    "target": "es5",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "downlevelIteration": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+    ],
+  }
+}

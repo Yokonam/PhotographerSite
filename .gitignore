@@ -1,0 +1,8 @@
+**/*.exe
+**/*.log
+Thumbs.db
+
+.vscode
+
+**/*.map
+node_modules
