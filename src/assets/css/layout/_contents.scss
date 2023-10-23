@@ -1,0 +1,41 @@
+@use "sass:math";
+@use '../foundation/variables'as *;
+@use '../foundation/mixins'as *;
+@use '../foundation/functions'as *;
+
+.l-contents {
+  position: relative;
+
+  &__inr {
+    margin: 0 auto;
+  }
+
+  // &__background {
+  //   position: fixed;
+  //   left: 50%;
+  //   top: 50%;
+  //   transform: translate(-50%, -50%);
+  //   width: calc(100% + 50px);
+  //   height: calc(100% + 50px);
+  //   --background-position-x: 0px;
+  //   --background-position-y: 0px;
+  //   background: no-repeat  0 0 / cover;
+  //   background-position: calc(var(--background-position-x) * 1px) calc(var(--background-position-y) * 1px);
+  //   // transition: background-position 2s ease-in-out, background-image .3s;
+  //   filter: blur(10px) brightness(80%);
+  //   z-index: -1;
+  //   &[data-image='Portrait']{
+  //     background-image: url(../img/portrait/img_01.jpg);
+  //   }
+  //   &[data-image='Landscape']{
+  //     background-image: url(../img/portrait/img_02.jpg);
+  //   }
+  //   &[data-image='Movie']{
+  //     background-image: url(../img/portrait/img_03.jpg);
+  //   }
+  // }
+
+  @include media-breakpoint-down(sm) {
+    padding: 0 rem(20);
+  }
+}

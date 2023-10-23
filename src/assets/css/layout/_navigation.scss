@@ -1,0 +1,50 @@
+@use "sass:math";
+@use '../foundation/variables'as *;
+@use '../foundation/mixins'as *;
+@use '../foundation/functions'as *;
+
+.l-navigation {
+  height: 100%;
+  position: fixed;
+  right: rem(30);
+  top: 0;
+  z-index: 100;
+
+  &__inr {
+    height: 100%;
+  }
+
+  &__cnt {
+    height: 100%;
+  }
+
+  &__list {
+    height: 100%;
+    list-style: none;
+    font-size: rem(15);
+    padding: 0;
+    margin: 0;
+    gap: rem(40);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  li {
+  }
+
+
+  a {
+    text-decoration: none;
+    display: block;
+    transition: border-color .3s;
+    line-height: 1;
+    white-space: nowrap;
+    color: #000;
+
+    .c-icon {
+      display: none;
+    }
+  }
+}
+

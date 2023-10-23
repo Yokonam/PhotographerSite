@@ -1,0 +1,34 @@
+extends /templates/_template
+
+block vars
+  -
+    var pageId = 'top'
+    var pageUrl = 'index.html'
+    var dir = '/'
+
+    var pageTitle = ''
+    var pageDescription = ''
+    var pageKeywords = ''
+    var bodyClass = 'top'
+    var pageBreadcrumb = {}
+    var noBreadcrumb = true
+    var pageType = 'website'
+    var lang = 'ja'
+
+
+
+block main
+  .p-top-index
+    .p-top-index__list
+      .p-top-index__item#Portrait
+        a(href="portrait/")
+          +image("/portrait/img_01.jpg", {sp: false, ratio:false})
+          .p-top-index__title Portrait
+      .p-top-index__item#Landscape
+        a(href="portrait/")
+          +image("/portrait/img_02.jpg", {sp: false, ratio:false})
+          .p-top-index__title Landscape
+      .p-top-index__item#Movie
+        a(href="portrait/")
+          +image("/portrait/img_03.jpg", {sp: false, ratio:false})
+          .p-top-index__title Movie

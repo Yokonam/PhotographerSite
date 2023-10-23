@@ -1,0 +1,16 @@
+mixin dialog (id, title, group, attr)
+  .c-dialog.-closing(
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    id=id
+    aria-label=title
+    data-group=group
+    )&attributes(attr)
+    .c-dialog__wrap
+      .c-dialog__cnt
+        .c-dialog__main(data-main)
+          button.c-dialog__close(data-dialog-close aria-label="モーダルを閉じる")
+          .c-dialog__inr
+            if block
+              block

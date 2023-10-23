@@ -1,0 +1,57 @@
+@use '../variables' as v;
+@use './browser' as browser;
+
+@mixin hv-color($color: var(--body-color), $hv-color: var(--link-color), $line: false) {
+  color: $color;
+  @if $line == false {
+    text-decoration: none;
+  }
+  @media (any-hover: hover) {
+    transition: color .15s, fill .15s;
+    &:hover {
+      fill: $hv-color;
+      color: $hv-color;
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin hv-img() {
+  .img {
+    position: relative;
+    overflow: hidden;
+    img {
+      transition: transform .3s ease-out;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 0 0 inset rgba(#000, .5);
+      transition: box-shadow .1s ease-out;
+    }
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      .img {
+        img {
+          transform: scale(1.1);
+        }
+        &::after {
+          box-shadow: 0 0 0 1.5rem inset rgba(#000, .5);
+        }
+      }
+    }
+  }
+}
+
+@mixin hover{
+  @media (hover: hover) and (pointer: fine) {
+    &:hover{
+      @content;
+    }
+  }
+}

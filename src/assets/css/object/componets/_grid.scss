@@ -1,0 +1,55 @@
+@use '../../foundation/variables' as v;
+@use '../../foundation/mixins' as mixin;
+@use '../../foundation/functions' as func;
+
+.c-grid {
+  @include mixin.make-container();
+
+  &__row {
+    @include mixin.make-row();
+    &--flex {
+      display: flex;
+      > * {
+        display: flex;
+      }
+    }
+    &--no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 0;
+      .col,
+      [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+      }
+    }
+    &--gutter20 {
+      margin-right: -1rem;
+      margin-left: -1rem;
+      margin-bottom: -2rem;
+      .col,
+      [class*="col-"] {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    @include mixin.media-breakpoint-down(xs) {
+      &--gutter20 {
+        margin-right: -.75rem;
+        margin-left: -.75rem;
+        margin-bottom: -1.5rem;
+        .col,
+        [class*="col-"] {
+          padding-right: .75rem;
+          padding-left: .75rem;
+          padding-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@include mixin.make-grid-columns();

@@ -1,0 +1,35 @@
+@use "sass:math";
+@use './breakpoints' as bp;
+@use '../functions/str-replace' as func;
+
+@mixin ratio-img ($url, $extension: '.png') {
+
+  $ratioImg: func.str-replace($extension, '@2x' + $extension, $url);
+
+  background-image: url($url);
+  @include bp.media-ratio () {
+    background-image: url($ratioImg);
+  }
+}
+
+@mixin ratio-img ($url, $extension: '.png') {
+  $ratioImg: func.str-replace($extension, '@2x' + $extension, $url);
+  background-image: url($url);
+  background-image: image-set(url($ratioImg) 2x);
+}
+
+@mixin fill-screen($bgColor: null ,$bgImg: null) {
+  position: relative;
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  @if $bgColor != null { background-color: $bgColor; }
+  @if $bgImg != null {background: url($bgImg); }
+}
+
+@mixin fill-block {
+  position: relative;
+  left: calc(-50vw + 50%);
+  width: 100vw;
+}

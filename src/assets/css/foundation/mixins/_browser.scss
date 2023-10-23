@@ -1,0 +1,124 @@
+@mixin root-attr($attributes, $negate: false) {
+  @if (length($attributes) == 0) {
+    @error 'Mixin root-attr() requries at least one argument';
+  }
+
+  $attr-selector: '';
+
+  @each $f in $attributes {
+    $attr-selector: $attr-selector + $f;
+  }
+
+  @if ($negate) {
+    $attr-selector: ':not(' + $attr-selector + ')';
+  }
+
+  $reference: if('#{&}' == '' or '#{&}' == 'html', '', '#{&}');
+  $root-selector: '';
+
+  @if (str-index($reference, 'html') == 1) {
+    $index: str-index($reference, ' ');
+
+    @if (not $index) {
+      $index: str-length($reference);
+    }
+
+    $root-selector: str-insert($reference, $attr-selector, $index);
+    $reference: '';
+  }
+  @else {
+    $root-selector: html#{$attr-selector};
+  }
+
+  @at-root #{$root-selector} #{$reference} {
+    @content;
+  }
+}
+
+@mixin browser-with-javascript($negate: false) {
+  @include root-attr('.js', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-loading($negate: false) {
+  @include root-attr('[data-status="loading"]', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-loaded($negate: false) {
+  @include root-attr('[data-status="loaded"]', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-domready($negate: false) {
+  @include root-attr('[data-status="ready"]', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-android($negate: false) {
+  @include root-attr('.android', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-android4($negate: false) {
+  @include root-attr('.android4', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-ios($negate: false) {
+  @include root-attr('.ios', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-msie($negate: false) {
+  @include root-attr('.msie', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-msedge($negate: false) {
+  @include root-attr('.msedge', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-microsoft($negate: false) {
+  @include browser-msedge($negate) {
+    @content;
+  }
+
+  @include browser-msie($negate) {
+    @content;
+  }
+}
+
+@mixin browser-safari($negate: false) {
+  @include root-attr('.safari', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-webkit($negate: false) {
+  @include root-attr('.webkit', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-gecko($negate: false) {
+  @include root-attr('.gecko', $negate) {
+    @content;
+  }
+}
+
+@mixin browser-device($negate: false) {
+  @include root-attr('.device', $negate) {
+    @content;
+  }
+}

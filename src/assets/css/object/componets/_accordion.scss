@@ -1,0 +1,61 @@
+@use '../../foundation/variables'as *;
+@use '../../foundation/mixins'as *;
+@use '../../foundation/functions'as *;
+
+// .c-acc {
+//   &__btn {
+//     position: relative;
+//     cursor: pointer;
+//     &::after {
+//       content: "";
+//     }
+
+//   }
+//   &__cnt {
+//     transition: opacity .3s ease-out;
+//     &[aria-hidden=true] {
+//       visibility: hidden;
+//       height: 0;
+//       opacity: 0;
+//     }
+
+//     &[aria-hidden=false] {
+//       visibility: visible;
+//       height: auto;
+//       opacity: 1;
+//     }
+//   }
+//   @include media-breakpoint-down(sm) {
+//     &__btn {
+
+//     }
+//   }
+// }
+
+.c-acc {
+  &__btn {
+    cursor: pointer;
+  }
+  &__cnt {
+    // opacity: 0;
+    transition: all .2s;
+
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    overflow: hidden;
+
+    &.-closing {
+      display: none;
+    }
+
+    &[aria-hidden="false"] {
+      // opacity: 1;
+      grid-template-rows: 1fr;
+    }
+
+    > * {
+      overflow: hidden;
+    }
+  }
+}

@@ -62,6 +62,11 @@
   },
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
+    "microcms-js-sdk": "^2.5.0",
     "what-input": "^5.2.12"
+  },
+  "volta": {
+    "node": "16.0.0",
+    "npm": "8.7.0"
   }
 }

@@ -1,0 +1,71 @@
+@use "sass:math";
+@use '../foundation/variables'as *;
+@use '../foundation/mixins'as *;
+@use '../foundation/functions'as *;
+
+.l-breadcrumb {
+  position: relative;
+  color: #fff;
+  padding-left: math.div(100, 1400) * 100%;
+  margin-top: rem(-80);
+
+  &__inr {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    background-color: var(--color-1);
+    padding: rem(77) math.div(100, 1400) * 100% rem(34) rem(40);
+  }
+
+  li {
+    padding: 0;
+    margin: 0;
+    font-size: rem(13);
+
+    &:not(:last-child) {
+      margin-right: rem(10);
+    }
+
+    a {
+      text-decoration: underline;
+      color: #fff;
+
+      @include hover {
+        text-decoration: none;
+      }
+    }
+
+    a[aria-current='location'] {
+      pointer-events: none;
+    }
+
+    .c-icon {
+      margin-left: rem(10);
+      color: #fff;
+      transform: rotate(-90deg);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-left: rem(20);
+    margin-top: rem(-47);
+
+    &__inr {
+      padding: rem(38) rem(20) rem(20) rem(20);
+    }
+
+    li {
+      font-size: rem(12);
+
+      &:not(:last-child) {
+        margin-right: rem(10);
+      }
+
+      .c-icon {
+        margin-left: rem(10);
+      }
+    }
+  }
+}

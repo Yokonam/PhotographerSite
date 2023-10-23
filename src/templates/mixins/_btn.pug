@@ -1,0 +1,41 @@
+mixin btn(txt, href, icon, attr, roll)
+  -
+    var iconClass = Array.isArray(icon)
+      ? retIcon(icon)
+      : icon
+        ? 'c-btn--has-' + icon
+        : ''
+
+    function retIcon(items) {
+      var ret = ''
+      items.forEach(elm => ret += 'c-btn--has-' + elm + ' ')
+      return  ret
+    }
+
+  if (roll !== 'button')
+    a.c-btn(href=`${href}` class=`${iconClass}`)&attributes(attr)
+      if icon
+        if Array.isArray(icon)
+          each i in icon
+            svg(class=`c-icon ${i}` aria-hidden="true")
+              use(xlink:href=`${dir}assets/img/common/icon.svg#${i}`)
+        else
+          svg(class=`c-icon ${icon}` aria-hidden="true")
+            use(xlink:href=`${dir}assets/img/common/icon.svg#${icon}`)
+      span !{txt}
+      if block
+        block
+  else
+    button.c-btn(class=`${iconClass}`)&attributes(attr)
+      if icon
+        if Array.isArray(icon)
+          each i in icon
+            svg(class=`c-icon ${i}` aria-hidden="true")
+              use(xlink:href=`${dir}assets/img/common/icon.svg#${i}`)
+        else
+          svg(class=`c-icon ${icon}` aria-hidden="true")
+            use(xlink:href=`${dir}assets/img/common/icon.svg#${icon}`)
+      span !{txt}
+      if block
+        block
+

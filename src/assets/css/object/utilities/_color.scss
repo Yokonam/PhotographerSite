@@ -1,0 +1,6 @@
+@use '../../foundation/variables' as *;
+@use '../../foundation/mixins' as *;
+
+.u-color-warning{
+  color: $warning;
+}

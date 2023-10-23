@@ -1,0 +1,27 @@
+@use "sass:math";
+@use '../../foundation/variables'as *;
+@use '../../foundation/mixins'as *;
+@use '../../foundation/functions'as *;
+
+.c-heading-a {
+  font-size: rem(30);
+  font-family: var(--font-family-serif);
+  border-bottom: 1px solid #000;
+  padding-bottom: rem(15);
+  + *:not(:root){
+    margin-top: rem(30);
+  }
+
+  @include media-breakpoint-down(sm) {
+    font-size: rem(26);
+  }
+}
+
+
+.c-heading-b {
+  font-size: calc(20 / var(--root-font-size) * var(--font-ratio) * 1rem);
+  font-weight: 700;
+  + *:not(:root){
+    margin-top: rem(10);
+  }
+}

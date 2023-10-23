@@ -1,0 +1,14 @@
+@use "sass:math";
+@use '../foundation/variables'as *;
+@use '../foundation/mixins'as *;
+@use '../foundation/functions'as *;
+
+.l-header {
+  position: fixed;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding-left: rem(30);
+}

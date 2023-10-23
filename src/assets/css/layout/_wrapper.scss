@@ -1,0 +1,15 @@
+@use '../foundation/variables' as v;
+@use '../foundation/mixins' as mixin;
+
+.l-wrapper {
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  @at-root [data-menu="#navigation"] & {
+    &::after {
+      z-index: 900;
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,184 @@
+@use "sass:math";
+@use "../../foundation/variables" as v;
+@use "../../foundation/mixins" as mixin;
+@use "../../foundation/functions" as f;
+
+.c-dialog {
+  box-sizing: border-box;
+  width: calc(100vw - #{f.rem(40)});
+  max-width: f.rem(1030);
+  padding: f.rem(60);
+  border: 0;
+  background: #fff;
+  transition: opacity 0.5s;
+  border-radius: 0 f.rem(50) 0 f.rem(50);
+
+  &::backdrop {
+    background: rgba(#000, 0.9);
+    transition: opacity 0.5s;
+  }
+  &.-closing {
+    opacity: 0;
+    &::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+// IE対応版
+.c-dialog-ie {
+  $this: &;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+  visibility: hidden;
+  @at-root .has-dialog {
+    overflow: hidden;
+  }
+  &.-closing {
+    display: none;
+  }
+  &[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrap {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__cnt {
+    position: absolute;
+    z-index: 2;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    width: calc(100% - #{f.rem(40)});
+    max-width: f.rem(1030);
+    max-height: 100%;
+  }
+
+  &__main {
+    position: relative;
+    padding: f.rem(60) 0;
+    // transition: transform 0.5s ease;
+
+    [aria-hidden="true"] & {
+      // transform: translateY(100px);
+    }
+    [aria-hidden="false"] & {
+      // transform: translateY(0);
+    }
+  }
+  &__white {
+    position: relative;
+    background: #fff;
+    border-radius: 0 f.rem(50) 0 f.rem(50);
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: math.div(9, 16) * 100%;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__btn {
+    @include mixin.hidden();
+    position: absolute;
+    top: 0;
+    right: f.rem(-40);
+    width: f.rem(28);
+    height: f.rem(28);
+    display: block;
+    background: no-repeat top left / 100% auto;
+  }
+
+  // .next,
+  // .prev {
+  //   @include mixin.hidden;
+  //   cursor: pointer;
+  //   position: absolute;
+  //   z-index: 10;
+  //   top: 50%;
+  //   margin-top: -2rem;
+  //   width: 6rem;
+  //   height: 6rem;
+  //   background-image: url("data:image/svg+xml;base64," + f.base64Encode(
+  //       '<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path opacity=".702" fill-rule="evenodd" clip-rule="evenodd" fill="#C5C8C9" d="M29.1 0C46.569 0 60 13.432 60 29.1c0 17.468-13.431 30-30.9 30C13.431 59.1 0 46.568 0 29.1 0 13.432 13.431 0 29.1 0z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#0167B1" d="m37.007 29.999-14.907 10 7.125-10-7.125-9.998 14.907 9.998z"/></svg>'
+  //     ));
+  //   background-position: center center;
+  //   background-repeat: no-repeat;
+  //   background-size: 98%;
+
+  //   &:hover {
+  //     opacity: 0.7;
+  //   }
+  // }
+
+  .next {
+    right: 1rem;
+  }
+
+  .prev {
+    left: 1rem;
+    transform: scale(-1, 1);
+  }
+
+  @include mixin.media-breakpoint-down(sm) {
+    &__white {
+      &::after{
+        right: f.rem(-10);
+        bottom: f.rem(-10);
+      }
+    }
+    &__btn {
+      top: f.rem(-45);
+      right: 0;
+      width: f.rem(40);
+      height: f.rem(40);
+    }
+  }
+}
+
+a[data-videoid] {
+  display: block;
+  position: relative;
+  pointer-events: none;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000, 0.8);
+  }
+  &.ok {
+    pointer-events: auto;
+    &::after {
+      content: none;
+    }
+  }
+}

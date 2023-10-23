@@ -1,0 +1,54 @@
+-
+  var siteTtl = ''
+  var siteUrl = ''
+  var siteDescription = ''
+  var siteKeywords = ''
+
+  var pageTitle = null
+  var pageUrl = null
+  var pageId = null
+
+  var pageType = 'article'
+
+  var assetsImg = 'assets/img/'
+  var assetsCss = 'assets/css/'
+  var assetsJs = 'assets/js/'
+
+  var sm = '(max-width: 575px)'
+  var md = '(max-width: 889px)'
+
+block vars
+
+
+
+include ./mixins/_image
+include ./mixins/_icon
+include ./mixins/_btn
+include ./mixins/_dialog
+
+doctype html
+html(lang=lang prefix=`og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# ${pageType}: https://ogp.me/ns/${pageType}#`)
+  head
+    include _meta.pug
+    | #{'\n'}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100&display=swap" rel="stylesheet">
+    link(rel='stylesheet' href=`${dir}assets/css/style.css`)
+
+    block stylesheet
+
+  body(class=`${bodyClass}`)
+    #wrapper.l-wrapper
+      include layouts/_header.pug
+      include layouts/_navigation.pug
+      block main-before
+      main.l-contents(role='main')
+        .l-contents__background
+        .l-contents__inr
+          block main
+      block main-after
+        include layouts/_footer.pug
+    script(src=`${dir}assets/js/polyfill.js`)
+    script(src=`${dir}assets/js/main.js`)
+    block scripts

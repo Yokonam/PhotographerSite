@@ -1,0 +1,104 @@
+@use "sass:math";
+@use '../../foundation/variables'as *;
+@use '../../foundation/mixins'as *;
+@use '../../foundation/functions'as *;
+
+.c-section {
+  $this: &;
+  max-width: rem(1000);
+  margin-right: auto;
+  margin-left: auto;
+
+  >*+* {
+    margin-top: rem(22);
+  }
+
+  &--interview {
+    +#{$this}--interview {
+      margin-top: rem(140);
+    }
+  }
+
+  &--high{
+    >*+* {
+      margin-top: rem(66);
+    }
+  }
+
+  &__title {
+    font-size: rem(24);
+    font-family: var(--font-family-serif);
+
+    + *:not(:root){
+      margin-top: rem(40);
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: calc(60 / 1000*100%);
+
+    >*>*+* {
+      margin-top: rem(22);
+    }
+
+
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__main {
+    flex: 0 0 calc(500 / 1000*100%);
+  }
+
+  &__img {
+    flex: 0 0 calc(540 / 1000*100%);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    &--interview {
+      +#{$this}--interview {
+        margin-top: rem(76);
+      }
+
+      #{$this}__title {      
+        + *:not(:root){
+          margin-top: rem(20);
+        }
+      }
+    }
+
+    &__title {
+      +* {
+        margin-top: rem(31);
+      }
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: rem(20);
+
+      >*>*+* {
+        margin-top: rem(26);
+      }
+    }
+
+    &__main {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+
+    &__img {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+  }
+}

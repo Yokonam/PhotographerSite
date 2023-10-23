@@ -1,0 +1,101 @@
+//- テンプレート変数isSpで判定
+//- @param [画像パス, {}]
+mixin image(path, args={})
+  -
+    var src = dir + assetsImg + path
+    var index = src.lastIndexOf('.')
+    var file = src.substring(0,index)
+    var extension = src.slice(index)
+    var retinePath = file + '@2x' + extension  + ' 2x'
+    var spPath = file + '_sp' + extension
+
+    var media = args.media || md
+    var alt = args.alt ? args.alt : ''
+    var ratio = args.ratio !== false
+    var sp = args.sp === 'pc'
+      ? 'pc'
+      : args.sp !== false
+    var lazy = (args.lazy !== false) ? 'lazy' : 'eager'
+
+    var { width, height } = imageSize(src)
+
+  if ratio
+    if sp === 'pc'
+      picture(class=args.class)
+        source(media=media, srcset=src)
+        | #{'\n'}
+        img(src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy decoding='async')
+    else if sp
+      picture(class=args.class)
+        source(media=media, srcset=spPath)
+        | #{'\n'}
+        img(src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy decoding='async')
+    else
+      img(class=args.class, src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy decoding='async')
+  else
+    if sp
+      picture(class=args.class)
+        source(media=media, srcset=spPath)
+        | #{'\n'}
+        img(src=src, alt=`${alt}`, width=width, height=height loading=lazy decoding='async')
+    else
+      img(class=args.class, src=src, alt=`${alt}`, width=width, height=height loading=lazy decoding='async')
+
+
+mixin imageWebp(path, args={})
+  -
+    var src = dir + assetsImg + dir
+    var index = src.lastIndexOf('.')
+    var file = src.substring(0,index)
+    var extension = src.slice(index)
+    var retinePath = file + '@2x' + extension  + ' 2x'
+    var spPath = file + '_sp' + extension
+
+    var srcWebp = src + '.webp'
+    var retineWebp = file + '@2x' + extension  + '.webp 2x'
+    var spWebp = spPath + '.webp'
+
+    var media = args.media || mq
+    var alt = args.alt ? args.alt : ''
+    var ratio = args.ratio !== false
+    var sp = args.sp === 'pc'
+      ? 'pc'
+      : args.sp !== false
+    var lazy = (args.lazy !== false) ? 'lazy' : 'eager'
+
+    var { width, height } = imageSize(src)
+    // console.log(width, height)
+
+  if ratio
+    if sp === 'pc'
+      picture(class=args.class)
+        source(type="image/webp" media=media, srcset=srcWebp)
+        source(media=media, srcset=src)
+        source(type="image/webp" srcset=`${srcWebp} 1x, ${retineWebp}`)
+        | #{'\n'}
+        img(src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy)
+    else if sp
+      picture(class=args.class)
+        source(type="image/webp" media=media, srcset=spWebp)
+        source(media=media, srcset=spPath)
+        source(type="image/webp" srcset=`${srcWebp} 1x, ${retineWebp}`)
+        | #{'\n'}
+        img(src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy)
+    else
+      picture(class=args.class)
+        source(type="image/webp" srcset=`${srcWebp} 1x, ${retineWebp}`)
+        | #{'\n'}
+        img(class=args.class, src=src, srcset=retinePath, alt=`${alt}`, width=width, height=height loading=lazy)
+  else
+    if sp
+      picture(class=args.class)
+        source(type="image/webp" media=media, srcset=spWebp)
+        source(media=media, srcset=spPath)
+        source(type="image/webp" srcset=`${srcWebp}`)
+        | #{'\n'}
+        img(src=src, alt=`${alt}`, width=width, height=height loading=lazy)
+    else
+      picture(class=args.class)
+        source(type="image/webp" srcset=`${srcWebp}`)
+        | #{'\n'}
+        img(src=src, alt=`${alt}`, width=width, height=height loading=lazy)

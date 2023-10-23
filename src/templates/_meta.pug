@@ -1,0 +1,49 @@
+meta(charset='utf-8')
+meta(name='viewport', content='width=device-width,initial-scale=1,viewport-fit=cover')
+meta(name='format-detection', content='telephone=no')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='apple-mobile-web-app-capable' content='yes')
+
+-
+  var pageTtl = ''
+  var ttl = ''
+  var k = []
+  var j = 0
+
+if pageBreadcrumb
+  each val, key in pageBreadcrumb
+    - k[j] = `${key}`
+    - j ++
+  - for (var i = k.length-1; i >= 0; i--)
+      - ttl += `${k[i]}｜`
+
+  if pageUrl === 'index.html'
+    - pageTtl = `${siteTtl}`
+  else
+    - pageTtl = `${pageTitle}｜${ttl}${siteTtl}`
+else
+  - pageTtl = `${siteTtl}｜${pageTitle}`
+
+title !{pageTtl}
+
+if description = pageDescription ? pageDescription : siteDescription
+
+if keywords = pageKeywords ? siteKeywords + ',' + pageKeywords : siteKeywords
+
+meta(name='description', content!=`${description}`)
+meta(name='keywords', content!=`${keywords}`)
+
+link(rel="canonical", href=`${siteUrl}${pageUrl}`)
+
+link(rel="icon" href=`${dir}assets/img/common/favicons/favicon.ico` sizes="any")
+link(rel="icon" href=`${dir}assets/img/common/favicons/favicon.svg` type="image/svg+xml")
+link(rel="icon alternate" type="image/png" href=`${dir}assets/img/common/favicons/favicon-32x32.png`)
+link(rel="apple-touch-icon" href=`${dir}assets/img/common/favicons/apple-touch-icon.png`)
+
+meta(name='twitter:card', content='summary_large_image')
+meta(property='og:title', content!=pageTtl)
+meta(property='og:url', content=`${siteUrl}${pageUrl}`)
+meta(property='og:description', content!=`${description}`)
+meta(property='og:type', content=`${pageType}`)
+meta(property='og:site_name', content=siteTtl)
+meta(property='og:image', content=`${siteUrl}assets/img/common/ogp.png`)

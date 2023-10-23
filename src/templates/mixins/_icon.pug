@@ -1,0 +1,25 @@
+mixin icon(id, attr, href)
+  -
+    var path = href || `${dir}assets/img/common/icon.svg`
+    var attributs = attr || {}
+    if (!attributs.class) {
+      attributs.class = id
+    } else {
+      attributs.class = attributs.class + ' ' + id
+    }
+
+  svg.c-icon(aria-hidden="true")&attributes(attributs)
+    use(xlink:href=`${path}#${id}`)
+
+mixin icon_file(id, attr, href)
+  -
+    var path = href || `${dir}assets/img/common/icon_files.svg`
+    var attributs = attr || {}
+    if (!attributs.class) {
+      attributs.class = id
+    } else {
+      attributs.class = attributs.class + ' ' + id
+    }
+
+  svg.c-icon-file(aria-hidden="true")&attributes(attributs)
+    use(xlink:href=`${path}#${id}`)

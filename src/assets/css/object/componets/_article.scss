@@ -1,0 +1,24 @@
+@use "sass:math";
+@use '../../foundation/variables' as *;
+@use '../../foundation/mixins' as *;
+@use '../../foundation/functions' as *;
+
+.c-article {
+  padding: rem(100) 0 rem(140);
+  &__body {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    > * + * {
+      margin-top: rem(60);
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    padding: rem(50) 0 rem(70);
+    &__body {
+      > * + * {
+        margin-top: rem(40)
+      }
+    }
+  }
+}

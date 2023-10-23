@@ -1,0 +1,18 @@
+- const crClass = (currentPage) => (pageId === currentPage ? 'current' : '')
+
+// ** start navigation **********
+nav#navigation.l-navigation(role='banner')
+  .l-navigation__inr
+    .l-navigation__cnt#navigation(role="navigation"  aria-label="メイン")
+      ul.l-navigation__list
+        li(class=crClass('Portrait'))
+          a(href=`${dir}portrait/`) Portrait
+        li(class=crClass('Landscape'))
+          a(href=`${dir}landscape/`) Landscape
+        li(class=crClass('Movie'))
+          a(href=`${dir}movie/`) Movie
+        li(class=crClass('LivePhoto'))
+          a(href=`${dir}livePhoto/`) LivePhoto
+    button#menuBtn.l-navigation__menu(aria-label="ナビゲーションメニュー")
+// ** end navigation **********
+| #{'\n'}

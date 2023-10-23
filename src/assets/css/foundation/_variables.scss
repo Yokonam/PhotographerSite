@@ -1,0 +1,58 @@
+@use "sass:math";
+
+//color
+$primary-1:           #006143 !default;
+$primary-2:           #003826 !default;
+
+$secondary:         #AA0303 !default;
+$success:           #A6AD4E !default;
+$warning:           #AA0303 !default;
+$color-1:           #222222 !default;
+
+//breakpoint
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 890px,
+  lg: 1280px,
+  xl: 1400px,
+  xxl: 1600px,
+) !default;
+
+$spacer: .5rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * 1),
+  2: ($spacer * 2),
+  3: ($spacer * 3),
+  4: ($spacer * 4),
+  5: ($spacer * 5),
+  6: ($spacer * 6),
+  7: ($spacer * 7),
+  8: ($spacer * 8),
+  9: ($spacer * 9),
+  10: ($spacer * 10),
+  11: ($spacer * 11),
+  12: ($spacer * 12),
+  13: ($spacer * 13),
+  14: ($spacer * 14),
+  15: ($spacer * 15),
+  16: ($spacer * 16)
+);
+
+// font-size
+$root-font-size: 16 !default;
+$font-size-pc: 16 !default;
+$font-size-sp: 16 !default;
+
+// grid
+$grid-columns:      24 !default;
+$grid-gutter-width: 4rem !default;
+$grid-gutter-width-sp: 2rem !default;
+
+$font-family-sans: "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "メイリオ", "Meiryo", "ＭＳ ゴシック", sans-serif !default;
+
+
+$line-height-base: math.div(27, $font-size-pc) !default;
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;

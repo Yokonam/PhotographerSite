@@ -1,0 +1,32 @@
+@use '../../foundation/variables' as v;
+@use '../../foundation/mixins' as mixin;
+
+.u-text-justify  { text-align: justify !important; }
+.u-text-wrap     { white-space: normal !important; }
+.u-text-nowrap   { white-space: nowrap !important; }
+
+// Responsive alignment
+
+@each $breakpoint in map-keys(v.$grid-breakpoints) {
+  @include mixin.media-breakpoint-up($breakpoint) {
+    $infix: mixin.breakpoint-infix($breakpoint, v.$grid-breakpoints);
+
+    .u-text#{$infix}-left   { text-align: left !important; }
+    .u-text#{$infix}-right  { text-align: right !important; }
+    .u-text#{$infix}-center { text-align: center !important; }
+  }
+}
+
+// Transformation
+
+.u-text-lowercase  { text-transform: lowercase !important; }
+.u-text-uppercase  { text-transform: uppercase !important; }
+.u-text-capitalize { text-transform: capitalize !important; }
+
+.u-note {
+  display: flex;
+  font-size: 1.4rem;
+  > span:first-child {
+    margin-right: .2rem;
+  }
+}

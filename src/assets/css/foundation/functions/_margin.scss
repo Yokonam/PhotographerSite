@@ -1,0 +1,11 @@
+@use "sass:math";
+@use '../variables' as v;
+
+@function m($size: 10, $fz: 16, $lh: v.$line-height-base) {
+  @return $size - math.div(($fz * $lh - $fz), 2);
+}
+
+
+@function m2($size: 10, $fz: v.$font-size-pc, $lh: v.$line-height-base) {
+  @return ($size - math.div(($lh - 1) * $fz, 2)) * 0.1rem;
+}

@@ -1,0 +1,7 @@
+@mixin hidden {
+    overflow: hidden;
+    display: block;
+    text-indent: 200%;
+    white-space: nowrap;
+    text-align: left;
+}

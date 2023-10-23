@@ -1,0 +1,12 @@
+@mixin ar($direction: null) {
+  $directions: ("up": polygon(50% 0, 0 100%, 100% 100%),
+                "right": polygon(0 0, 0 100%, 100% 50%),
+                "down": polygon(0 0, 100% 0, 50% 100%),
+                "left": polygon(0 50%, 100% 0, 100% 100%));
+
+  @if map-has-key($directions, $direction) {
+    clip-path: map-get($directions, $direction);
+  } @else {
+    @warn "正しい向きを指定してください。" + "指定できる向きは次のとおりです。-> up,right,down,left";
+  }
+}

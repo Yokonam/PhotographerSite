@@ -1,0 +1,33 @@
+extends /templates/_template
+
+block vars
+  -
+    var pageId = 'portrait'
+    var pageUrl = 'portrait/index.html'
+    var dir = '/'
+
+    var pageTitle = ''
+    var pageDescription = ''
+    var pageKeywords = ''
+    var bodyClass = ''
+    var pageBreadcrumb = {}
+    var noBreadcrumb = false
+    var pageType = 'article'
+
+
+
+block main
+  .c-gallery-index
+    .c-gallery-index__list
+      .c-gallery-index__item
+        a(href="portrait/")
+          +image("/portrait/img_01.jpg", {sp: false, ratio:false})
+          .c-gallery-index__title Portrait
+      .c-gallery-index__item
+        a(href="portrait/")
+          +image("/portrait/img_02.jpg", {sp: false, ratio:false})
+          .c-gallery-index__title Portrait
+      .c-gallery-index__item
+        a(href="portrait/")
+          +image("/portrait/img_03.jpg", {sp: false, ratio:false})
+          .c-gallery-index__title Portrait
